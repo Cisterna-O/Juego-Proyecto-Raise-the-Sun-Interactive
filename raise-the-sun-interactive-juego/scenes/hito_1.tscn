@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bla1n0p6h7k8e" path="res://scenes/pause_menu.tscn" id="1_0h1ha"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wq1nc"]
-distance = -3.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4typ4"]
 
@@ -12,7 +11,7 @@ distance = -3.0
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2DInferiro" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(265, 640)
+position = Vector2(132, 214)
 shape = SubResource("WorldBoundaryShape2D_wq1nc")
 
 [node name="CollisionShape2DLateral" type="CollisionShape2D" parent="StaticBody2D"]
@@ -20,3 +19,4 @@ rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_4typ4")
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_0h1ha")]
+process_mode = 3
