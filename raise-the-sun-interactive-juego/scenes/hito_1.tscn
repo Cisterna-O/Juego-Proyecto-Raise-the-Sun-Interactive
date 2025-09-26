@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3184iywoweiu"]
+[gd_scene load_steps=5 format=3 uid="uid://b3184iywoweiu"]
 
 [ext_resource type="PackedScene" uid="uid://bla1n0p6h7k8e" path="res://scenes/pause_menu.tscn" id="1_0h1ha"]
+[ext_resource type="PackedScene" uid="uid://swn07m8nqbgw" path="res://scenes/player.tscn" id="1_wq1nc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wq1nc"]
 
@@ -18,5 +19,8 @@ shape = SubResource("WorldBoundaryShape2D_wq1nc")
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_4typ4")
 
+[node name="Player" parent="." instance=ExtResource("1_wq1nc")]
+
 [node name="PauseMenu" parent="." instance=ExtResource("1_0h1ha")]
 process_mode = 3
+visible = false

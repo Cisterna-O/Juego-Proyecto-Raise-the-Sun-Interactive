@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bla1n0p6h7k8e"]
+[gd_scene load_steps=3 format=3 uid="uid://bla1n0p6h7k8e"]
 
 [ext_resource type="Script" uid="uid://8lc1s222bwx3" path="res://scenes/pause_menu.gd" id="1_n87rw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n87rw"]
+font_size = 32
 
 [node name="PauseMenu" type="CanvasLayer"]
 script = ExtResource("1_n87rw")
@@ -26,20 +29,22 @@ layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Pause Menu"
+size_flags_horizontal = 4
+text = "PAUSE"
+label_settings = SubResource("LabelSettings_n87rw")
 
 [node name="ContinueButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "CONTINUE"
+text = "Continue"
 
 [node name="RetryButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "RETRY"
+text = "Retry"
 
 [node name="MainMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "MAIN MENU"
+text = "Main Menu"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "QUIT"
+text = "Quit"
