@@ -20,6 +20,7 @@ rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_4typ4")
 
 [node name="Player" parent="." instance=ExtResource("1_wq1nc")]
+position = Vector2(70, 185)
 
 [node name="PauseMenu" parent="." instance=ExtResource("1_0h1ha")]
 process_mode = 3
