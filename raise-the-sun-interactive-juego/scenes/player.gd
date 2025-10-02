@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-@export var max_speed = 300
+@export var max_speed = 200
 @export var jump_speed = 200
 @export var gravity = 500
 @export var acceleration = 1000
