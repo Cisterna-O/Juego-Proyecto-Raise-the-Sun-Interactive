@@ -5,6 +5,18 @@ extends CharacterBody2D
 @export var jump_speed = 200
 @export var gravity = 500
 @export var acceleration = 1000
+var peso: float=1
+var can_dash: bool=false
+var is_dashing: bool=false
+var dash_timer: float=0
+const dash_dura:= 0.2
+const dash_speed:= 600
+const dash_cooldown:= 0.5
+var dash_cooldown_timer: float=0
+
+var habilidades: Array=[]
+const max_habilities:=2
+
 
 var was_on_floor = false
 var is_dead := false
@@ -19,6 +31,34 @@ func _ready() -> void:
 	#	hitbox.damage_dealt.connect(_on_damage_dealt) 
 	pass
 
+func equipar_habilidad(habilidad:Habilidad):
+	if habilidades.size() >= max_habilities:
+		print("El que mucho abarca, poco aprieta (Austin 3:18)")
+		return
+	habilidades.append(habilidad)
+	habilidad.aplicar(self)
+
+func remover_habilidad(habilidad:Habilidad):
+	habilidad.remover(self)
+	habilidades.erase(habilidad)
+
+func tiene_habilidad(nombre_habilidad:String):
+	for h in habilidades:
+		if h.nombre == nombre_habilidad:
+			return true
+	return false
+
+func start_dash(move_input:float):
+	is_dashing=true
+	dash_timer=dash_dura
+	can_dash=false
+	
+	#Dirección del dash
+	var direction= sign(move_input)
+	if direction==0:
+		direction=sign(sprite_2d.scale.x)
+	velocity.x=direction*dash_speed
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta 
@@ -27,9 +67,17 @@ func _physics_process(delta: float) -> void:
 		velocity.y = -jump_speed
 		was_on_floor = false
 		
-	var move_input = Input.get_axis("move_left", "move_right")
+	var move_input: float = Input.get_axis("move_left", "move_right")
 	velocity.x = move_toward(velocity.x, move_input * max_speed, acceleration * delta)
 	move_and_slide()
+	
+	if Input.is_action_just_pressed("skill") and can_dash:
+		start_dash(move_input)
+	if is_dashing:
+		dash_timer-=delta
+		if dash_timer<=0:
+			is_dashing=false
+			dash_cooldown_timer=dash_cooldown
 	
 	#if ray_cast_2d.is_colliding():
 		
