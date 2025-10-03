@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://jt80gv02u4f2"]
+
+[ext_resource type="Script" path="res://scenes/hud.gd" id="1_8msyy"]
+
+[sub_resource type="Theme" id="Theme_0yvta"]
+default_font_size = 64
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_8msyy")
+
+[node name="Start" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -331.5
+offset_right = 331.5
+offset_bottom = 420.0
+grow_horizontal = 2
+theme = SubResource("Theme_0yvta")
+theme_override_constants/separation = 32
+
+[node name="CollectedCoins" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 9.0
+offset_top = 4.0
+offset_right = 87.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 21
+text = "Coins: 0"
