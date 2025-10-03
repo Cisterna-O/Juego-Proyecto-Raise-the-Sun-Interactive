@@ -7,11 +7,11 @@ func _init():
 
 func aplicar(pje):
 	pje.peso-=1
-	pje.vel+=50
+	pje.max_speed+=100
 	pje.gravity*=0.7
 
 func remover(pje):
 
 	pje.peso+=1
-	pje.vel-= 50
+	pje.max_speed-= 50
 	pje.gravity/=0.7

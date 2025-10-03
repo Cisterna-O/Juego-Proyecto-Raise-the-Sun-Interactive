@@ -10,18 +10,18 @@ var can_dash: bool=false
 var is_dashing: bool=false
 var dash_timer: float=0
 const dash_dura:= 0.2
-const dash_speed:= 600
+const dash_speed:= 500
 const dash_cooldown:= 0.5
 var dash_cooldown_timer: float=0
 
 var habilidades: Array=[]
 const max_habilities:=2
 
-
 var was_on_floor = false
 var is_dead := false
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var pivot: Node2D = $Pivot
+@onready var sprite_2d: Sprite2D = $Pivot/Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 
@@ -32,9 +32,14 @@ func _ready() -> void:
 	pass
 
 func equipar_habilidad(habilidad:Habilidad):
+	for h in habilidades:
+		if h.nombre == habilidad.nombre:
+			print("Ya tienes esta habilidad",h.nombre)
+			return
 	if habilidades.size() >= max_habilities:
-		print("El que mucho abarca, poco aprieta (Austin 3:18)")
-		return
+		var habilidad_a_remover = habilidades[0]
+		print("Reemplazando",habilidad_a_remover.nombre,"por",habilidad.nombre)
+		remover_habilidad(habilidad_a_remover)
 	habilidades.append(habilidad)
 	habilidad.aplicar(self)
 
@@ -63,21 +68,28 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta 
 	if (is_on_floor() ) and Input.is_action_just_pressed("jump"): #or not coyote_timer.is_stopped()
-
 		velocity.y = -jump_speed
 		was_on_floor = false
 		
 	var move_input: float = Input.get_axis("move_left", "move_right")
+	if move_input!=0:
+		pivot.scale.x=sign(move_input)
 	velocity.x = move_toward(velocity.x, move_input * max_speed, acceleration * delta)
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("skill") and can_dash:
+	if Input.is_action_just_pressed("skill") and can_dash and tiene_habilidad("Dash"):
 		start_dash(move_input)
 	if is_dashing:
 		dash_timer-=delta
 		if dash_timer<=0:
 			is_dashing=false
 			dash_cooldown_timer=dash_cooldown
+			
+	if not can_dash:
+		if dash_cooldown_timer>0:
+			dash_cooldown_timer-=delta
+		else:
+			can_dash=true
 	
 	#if ray_cast_2d.is_colliding():
 		
@@ -89,9 +101,9 @@ func _physics_process(delta: float) -> void:
 	
 	#animation
 
-#	if is_on_floor():
-#		if move_input:
-#			pivot.scale.x = sign(move_input)
+	#if is_on_floor():
+	#	if move_input:
+	#		pivot.scale.x = sign(move_input)
 	
 #		if move_input or (velocity.x) > 10:
 #			playback.travel("run")
