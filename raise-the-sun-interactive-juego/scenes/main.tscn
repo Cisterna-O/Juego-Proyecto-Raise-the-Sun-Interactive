@@ -171,7 +171,7 @@ rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_4typ4")
 
 [node name="Player" parent="." instance=ExtResource("3_o6xl0")]
-position = Vector2(70, 185)
+position = Vector2(85, 202)
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_tipki")]
 process_mode = 3
@@ -181,12 +181,12 @@ visible = false
 position = Vector2(726, 147)
 
 [node name="item2" parent="." instance=ExtResource("5_tbgi4")]
-position = Vector2(247, 163)
+position = Vector2(171, 157)
 habilidad_id = "light"
 
 [node name="item3" parent="." instance=ExtResource("5_tbgi4")]
-position = Vector2(290, 142)
+position = Vector2(218, 156)
 habilidad_id = "dash"
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("5_tefeu")]
-position = Vector2(879, 114)
+position = Vector2(893, 114)
