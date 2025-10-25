@@ -14,6 +14,10 @@ const dash_speed:= 500
 const dash_cooldown:= 0.5
 var dash_cooldown_timer: float=0
 
+const wall_jump_pushback = 150
+const wall_friction = 35
+var is_wall_sliding: bool = false
+
 var habilidades: Array=[]
 const max_habilities:=2
 
@@ -82,7 +86,14 @@ func _physics_process(delta: float) -> void:
 	if (is_on_floor() ) and Input.is_action_just_pressed("jump"): #or not coyote_timer.is_stopped()
 		velocity.y = -jump_speed
 		was_on_floor = false
-		
+	####ESTO ES WALLGRAB####
+	if is_on_wall_only() and Input.is_action_pressed("move_right") and Input.is_action_just_pressed("jump"):
+		velocity.y = -jump_speed
+		velocity.x = -wall_jump_pushback
+	if is_on_wall_only() and Input.is_action_pressed("move_left") and Input.is_action_just_pressed("jump"):
+		velocity.y = -jump_speed
+		velocity.x = wall_jump_pushback
+	####ESTO ES WALLGRAB####
 	var move_input: float = Input.get_axis("move_left", "move_right")
 	if move_input!=0:
 		pivot.scale.x=sign(move_input)
@@ -102,7 +113,7 @@ func _physics_process(delta: float) -> void:
 			dash_cooldown_timer-=delta
 		else:
 			can_dash=true
-	
+	wall_slide(delta)
 	#if ray_cast_2d.is_colliding():
 		
 	#if was_on_floor and not is_on_floor():
@@ -140,6 +151,19 @@ func _physics_process(delta: float) -> void:
 
 #	audio_death_player.play()
 #	audio_death_player.finished.connect(_on_death_finished, CONNECT_ONE_SHOT)
+#########WALL SLIDE ######
+func wall_slide(delta):
+	var move_input = Input.get_axis("move_left", "move_right")
+	if not is_on_floor() and is_on_wall():
+		var facing_dir = sign(pivot.scale.x)
+		var holding_toward = (move_input * facing_dir) > 0.1
+		is_wall_sliding = holding_toward
+	else:
+		is_wall_sliding = false
+
+	if is_wall_sliding:
+		velocity.y = min(velocity.y, wall_friction)
+#########WALL SLIDE ######
 
 func _on_death_finished():
 	queue_free()
