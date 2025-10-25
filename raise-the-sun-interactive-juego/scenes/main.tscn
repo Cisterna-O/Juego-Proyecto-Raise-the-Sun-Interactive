@@ -181,11 +181,11 @@ visible = false
 position = Vector2(726, 147)
 
 [node name="item2" parent="." instance=ExtResource("5_tbgi4")]
-position = Vector2(171, 157)
+position = Vector2(163, 159)
 habilidad_id = "light"
 
 [node name="item3" parent="." instance=ExtResource("5_tbgi4")]
-position = Vector2(218, 156)
+position = Vector2(229, 159)
 habilidad_id = "dash"
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("5_tefeu")]

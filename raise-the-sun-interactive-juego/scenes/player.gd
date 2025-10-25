@@ -25,14 +25,21 @@ var was_on_floor = false
 var is_dead := false
 
 @onready var pivot: Node2D = $Pivot
-@onready var sprite_2d: Sprite2D = $Pivot/Sprite2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var idle: Sprite2D=$Pivot/Idle
+@onready var walk: Sprite2D=$Pivot/Walk
+@onready var jump: Sprite2D=$Pivot/Jump
+@onready var fall: Sprite2D=$Pivot/Fall
+@onready var dash: Sprite2D=$Pivot/Dash
+@onready var damage: Sprite2D=$Pivot/Hurt
+@onready var animation_player: AnimationPlayer=$AnimationPlayer
+@onready var animation_tree: AnimationTree=$AnimationTree
+@onready var playback : AnimationNodeStateMachinePlayback
 
 
 func _ready() -> void:
-	#coyote_timer.timeout.connect(_on_coyote_timeout)
-	#for hitbox in get_tree().get_nodes_in_group("Hitboxes"):
-	#	hitbox.damage_dealt.connect(_on_damage_dealt) 
+	animation_tree.active=true
+	playback=animation_tree.get("parameters/playback")
 	pass
 
 func equipar_habilidad(habilidad:Habilidad):
@@ -65,8 +72,13 @@ func start_dash(move_input:float):
 	#Dirección del dash
 	var direction= sign(move_input)
 	if direction==0:
-		direction=sign(sprite_2d.scale.x)
+		direction=sign(pivot.scale.x)
 	velocity.x=direction*dash_speed
+
+func show_sprite(active_sprite: Sprite2D) -> void:
+	var sprites = [idle, walk, jump, damage, dash, fall]
+	for s in sprites:
+		s.visible=(s==active_sprite)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -111,23 +123,23 @@ func _physics_process(delta: float) -> void:
 	was_on_floor = is_on_floor()
 	
 	#animation
+	if move_input:
+		pivot.scale.x=sign(move_input)
+	if is_on_floor():
+		if move_input or abs(velocity.x)>10:
+			playback.travel("walk")
+			show_sprite(walk)
+		else:
+			playback.travel("idle")
+			show_sprite(idle)
+	else:
+		if velocity.y<0:
+			playback.travel("jump_up")
+			show_sprite(jump)
+		else:
+			playback.travel("drop")
+			show_sprite(fall)
 
-	#if is_on_floor():
-	#	if move_input:
-	#		pivot.scale.x = sign(move_input)
-	
-#		if move_input or (velocity.x) > 10:
-#			playback.travel("run")
-#		else:
-#			playback.travel("idle")	
-			
-#	else:
-#		if velocity.y < 0:
-#			playback.travel("jump")	
-#		else:
-#			playback.travel("fall")
-			
-			
 #func take_damage(damage):
 #	if is_dead: return
 #	is_dead = true
