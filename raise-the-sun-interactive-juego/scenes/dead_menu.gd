@@ -8,7 +8,6 @@ func _ready() -> void:
 	replay_menu_dead.pressed.connect(_on_replay_dead_pressed)
 	main_menu_menu_dead.pressed.connect(_on_main_menu_dead_pressed)
 	quit_dead.pressed.connect(_on_quit_dead_pressed)
-	visible = false
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("dead"):

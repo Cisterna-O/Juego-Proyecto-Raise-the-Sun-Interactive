@@ -1,7 +1,8 @@
-[gd_scene load_steps=44 format=3 uid="uid://swn07m8nqbgw"]
+[gd_scene load_steps=45 format=3 uid="uid://swn07m8nqbgw"]
 
 [ext_resource type="Script" uid="uid://b6gnkte75t771" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://d2w888bgjvx43" path="res://Assets/Ducky Revamped/Spritesheets/Idle.png" id="2_g2els"]
+[ext_resource type="Script" uid="uid://myrnkxwa1y40" path="res://Components/Hurtbox.gd" id="2_smehm"]
 [ext_resource type="Texture2D" uid="uid://bhjhqei8xqcp8" path="res://Assets/Ducky Revamped/Spritesheets/Walk.png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://cy2f3i3ck14ji" path="res://Assets/Ducky Revamped/Spritesheets/Jump.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://cb28jml314tkv" path="res://Assets/Ducky Revamped/Spritesheets/Hurt.png" id="5_smehm"]
@@ -289,6 +290,7 @@ shape = SubResource("RectangleShape2D_g2els")
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("2_smehm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 1)
@@ -347,6 +349,10 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_d2wvv")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
 [connection signal="body_entered" from="Pivot/Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Pivot/Range" to="." method="_on_range_body_exited"]

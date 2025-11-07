@@ -47,6 +47,7 @@ var kick_force:= 600
 var was_on_floor = false
 var is_dead := false
 
+@onready var timer: Timer = $Timer
 @onready var pivot: Node2D = $Pivot
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var idle: Sprite2D=$Pivot/Idle
@@ -60,6 +61,7 @@ var is_dead := false
 @onready var playback : AnimationNodeStateMachinePlayback
 @onready var hand_position: Marker2D=$Pivot/Hand_pos
 @onready var kick_position: Marker2D=$Pivot/Kick_pos
+@onready var camera_2d: Camera2D = $Camera2D
 
 
 func _ready() -> void:
@@ -68,6 +70,7 @@ func _ready() -> void:
 	animation_tree.active=false
 	playback=animation_tree.get("parameters/playback")
 	animation_tree.active=true
+	timer.timeout.connect(time2die)
 	pass
 
 func equipar_habilidad(habilidad:Habilidad):
@@ -295,11 +298,20 @@ func take_damage(damage):
 	die()
 
 func die():
+	var campos=camera_2d.global_position
+	remove_child(camera_2d)
+	get_parent().add_child(camera_2d)
+	camera_2d.global_position=campos
 	playback.travel("damage")
 	show_sprite(damage)
 	velocity.y=-300
 	set_collision_mask_value(1,false)
 	set_collision_mask_value(2,false)
+	timer.start()
+	get_tree().change_scene_to_file("res://scenes/DeadMenu.tscn")
+
+func time2die():
+	print("Undertaker!!")
 
 #func _on_death_finished():
 #	queue_free()
