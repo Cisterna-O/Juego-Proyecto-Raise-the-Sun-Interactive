@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c25grpirc50r2"]
+
+[ext_resource type="Script" uid="uid://q7dyadd7lgxg" path="res://scenes/bloque.gd" id="1_cmoke"]
+[ext_resource type="Texture2D" uid="uid://bo6wuqdblsffr" path="res://icon.svg" id="1_h0a8a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cmoke"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofljt"]
+size = Vector2(22, 21)
+
+[node name="Bloque" type="CharacterBody2D"]
+script = ExtResource("1_cmoke")
+
+[node name="Normal" type="Sprite2D" parent="."]
+position = Vector2(-2.3841858e-07, -7.1525574e-07)
+scale = Vector2(0.15625, 0.15625001)
+texture = ExtResource("1_h0a8a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cmoke")
+
+[node name="Top Detector" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top Detector"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ofljt")
+
+[connection signal="body_entered" from="Top Detector" to="." method="_on_top_detector_body_entered"]
+[connection signal="body_exited" from="Top Detector" to="." method="_on_top_detector_body_exited"]

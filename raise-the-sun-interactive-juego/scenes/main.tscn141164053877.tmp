@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://b3184iywoweiu"]
+[gd_scene load_steps=11 format=4 uid="uid://b3184iywoweiu"]
 
 [ext_resource type="Texture2D" uid="uid://w2uec21mni3o" path="res://Assets/Etapas/Day-Platformer/PNG/tileset.png" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://swn07m8nqbgw" path="res://scenes/player.tscn" id="3_o6xl0"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://xjmrvtwx5boj" path="res://scenes/barrera.tscn" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://c25grpirc50r2" path="res://scenes/bloque.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://jt80gv02u4f2" path="res://scenes/hud.tscn" id="7_o6xl0"]
-[ext_resource type="PackedScene" uid="uid://dnp221u6hds7r" path="res://scenes/Pincho.tscn" id="8_tipki"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7y16x"]
 texture = ExtResource("2_tefeu")
@@ -187,6 +186,10 @@ shape = SubResource("WorldBoundaryShape2D_4typ4")
 
 [node name="Player" parent="." instance=ExtResource("3_o6xl0")]
 position = Vector2(83, 195)
+max_speed = null
+jump_speed = null
+gravity = null
+acceleration = null
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_tipki")]
 process_mode = 3
@@ -219,6 +222,3 @@ position = Vector2(398, 184)
 tipo = "superpesado"
 
 [node name="HUD" parent="." instance=ExtResource("7_o6xl0")]
-
-[node name="StaticBody2D3" parent="." instance=ExtResource("8_tipki")]
-position = Vector2(118, 201)

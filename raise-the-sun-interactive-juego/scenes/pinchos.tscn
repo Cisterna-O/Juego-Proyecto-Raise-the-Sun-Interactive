@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://7hw1s6wsb0cf"]
+
+[ext_resource type="Texture2D" uid="uid://cv50r5lejfouq" path="res://Assets/Wooden Spikes/Wooden Spikes/4 Conjoined Wooden Spikes.png" id="1_kmket"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3ln3"]
+size = Vector2(40, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqb7s"]
+size = Vector2(42, 20)
+
+[node name="Pinchos" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kmket")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v3ln3")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_xqb7s")

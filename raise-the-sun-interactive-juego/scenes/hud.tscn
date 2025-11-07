@@ -27,6 +27,7 @@ text = "Skills"
 
 [node name="skill_container" type="HBoxContainer" parent="Start"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="skill1" type="VBoxContainer" parent="Start/skill_container"]
 layout_mode = 2
@@ -37,6 +38,7 @@ layout_mode = 2
 [node name="skill1_name" type="Label" parent="Start/skill_container/skill1"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
+text = "skill 1"
 
 [node name="skill2" type="VBoxContainer" parent="Start/skill_container"]
 layout_mode = 2
@@ -47,6 +49,7 @@ layout_mode = 2
 [node name="skill2_name" type="Label" parent="Start/skill_container/skill2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
+text = "skill2"
 
 [node name="CollectedCoins" type="Label" parent="."]
 unique_name_in_owner = true

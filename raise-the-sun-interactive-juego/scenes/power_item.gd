@@ -15,6 +15,8 @@ func _ready() -> void:
 			sprite.modulate=Color(0.7,1.0,1.0)
 		"dash":
 			sprite.modulate=Color(1.0,0.4,0.4)
+		"grab":
+			sprite.modulate=Color(.1,1,.05)
 		_:
 			sprite.modulate = Color.WHITE
 

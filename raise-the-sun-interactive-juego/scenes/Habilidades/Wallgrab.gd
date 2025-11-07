@@ -2,8 +2,7 @@ extends "res://scenes/Habilidades/Habilidad.gd"
 
 func _init():
 	nombre="Wall-grab"
-	tipo = TipoHabilidad.ACT
-	descripción="Reduce el peso del personaje."
+	descripción="Personaje se aferra y trepa la pared."
 
 func aplicar(pje):
 	pje.can_wall_grab=true
