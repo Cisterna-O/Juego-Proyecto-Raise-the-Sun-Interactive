@@ -10,12 +10,15 @@ var peso: float=1
 
 #Dash
 var can_dash: bool=false
+var can_sdash: bool=false
 var is_dashing: bool=false
+var isdashing: bool=false
 var dash_timer: float=0
 const dash_dura:= 0.2
 const dash_speed:= 500
 const dash_cooldown:= 0.5
 var dash_cooldown_timer: float=0
+var velocidash:= 1000
 
 #Wall Grab
 const wall_jump_pushback = 150
@@ -155,7 +158,7 @@ func _physics_process(delta: float) -> void:
 	if move_input!=0:
 		pivot.scale.x=sign(move_input)
 	velocity.x = move_toward(velocity.x, move_input * max_speed, acceleration * delta)
-	move_and_slide()
+	
 	
 	if Input.is_action_just_pressed("skill"):
 		if fusion!=null:
@@ -183,14 +186,15 @@ func _physics_process(delta: float) -> void:
 						holding=null
 				"Super Dash":
 					print("SUPERMÁXIMAVELOSIDAAAAAAD!!!")
+					if not is_on_wall_only():
+						isdashing=true
+						var dir=sign(pivot.scale.x)
+						if dir==0:
+							dir=1
+						velocity.y=0
+						velocity.x=dir*velocidash
 				"Wallgrab":
 					print("Puerco Araña")
-					if is_on_wall_only() and Input.is_action_pressed("move_right") and Input.is_action_just_pressed("jump"):
-						velocity.y = -jump_speed
-						velocity.x = -wall_jump_pushback
-					if is_on_wall_only() and Input.is_action_pressed("move_left") and Input.is_action_just_pressed("jump"):
-						velocity.y = -jump_speed
-						velocity.x = wall_jump_pushback
 			return
 		if tiene_habilidad("Dash"):
 			if can_dash:
@@ -227,6 +231,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			holding.global_position=hand_position.global_position
 	
+	
 	if is_dashing:
 		dash_timer-=delta
 		if dash_timer<=0:
@@ -237,7 +242,17 @@ func _physics_process(delta: float) -> void:
 			dash_cooldown_timer-=delta
 		else:
 			can_dash=true
-	wall_slide(delta)
+	
+	if fusion!=null:
+		match fusion.nombre:
+			"Wallgrab":
+				if is_on_wall_only() and Input.is_action_pressed("move_right") and Input.is_action_just_pressed("jump"):
+						velocity.y = -jump_speed
+						velocity.x = -wall_jump_pushback
+				if is_on_wall_only() and Input.is_action_pressed("move_left") and Input.is_action_just_pressed("jump"):
+					velocity.y = -jump_speed
+					velocity.x = wall_jump_pushback
+				wall_slide(delta)
 	#if ray_cast_2d.is_colliding():
 		
 	#if was_on_floor and not is_on_floor():
@@ -245,6 +260,8 @@ func _physics_process(delta: float) -> void:
 	#if is_on_floor():
 	#	coyote_timer.stop()
 	was_on_floor = is_on_floor()
+	
+	move_and_slide()
 	
 	#animation
 	if move_input:
