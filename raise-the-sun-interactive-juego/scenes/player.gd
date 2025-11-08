@@ -186,6 +186,12 @@ func _physics_process(delta: float) -> void:
 						holding=null
 				"Super Dash":
 					print("SUPERMÁXIMAVELOSIDAAAAAAD!!!")
+					#Borrar esto despues
+					var campos=camera_2d.global_position
+					remove_child(camera_2d)
+					get_parent().add_child(camera_2d)
+					camera_2d.global_position=campos
+					#hasta aqui
 					if isdashing:
 						dash_timer=sdash_dura
 					else:
@@ -339,6 +345,7 @@ func die():
 	set_collision_mask_value(1,false)
 	set_collision_mask_value(2,false)
 	timer.start()
+	await timer.timeout
 	get_tree().change_scene_to_file("res://scenes/DeadMenu.tscn")
 
 func time2die():
