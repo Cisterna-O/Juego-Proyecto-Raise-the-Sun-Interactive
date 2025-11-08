@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbn1spcgwo4j5"]
+
+[ext_resource type="FontFile" uid="uid://bu2cv5ph8bfam" path="res://antiquity-print.ttf" id="1_yd6hd"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.356
+anchor_right = 0.29700002
+anchor_bottom = 0.46800002
+offset_left = -0.07200003
+offset_top = 0.10399628
+offset_right = 0.95199585
+offset_bottom = -0.088005066
+theme_override_fonts/font = ExtResource("1_yd6hd")
+text = "<--- Escape"

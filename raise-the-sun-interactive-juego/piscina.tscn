@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgtsxy1u24lsa"]
+
+[ext_resource type="FontFile" uid="uid://bu2cv5ph8bfam" path="res://antiquity-print.ttf" id="1_ti18u"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.356
+anchor_right = 0.29700002
+anchor_bottom = 0.46800002
+offset_left = 38.928
+offset_top = 10.103996
+offset_right = 94.951996
+offset_bottom = 36.911995
+theme_override_fonts/font = ExtResource("1_ti18u")
+theme_override_font_sizes/font_size = 12
+text = "\"Piscina del sacrificio\"
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.356
+anchor_right = 0.29700002
+anchor_bottom = 0.46800002
+offset_left = -12.0720005
+offset_top = 14.103996
+offset_right = 136.952
+offset_bottom = 67.911995
+theme_override_fonts/font = ExtResource("1_ti18u")
+theme_override_font_sizes/font_size = 10
+text = "
+Debes entregar algo,
+para obtener algo.
+(ya no podrás levantar cajas)"
+horizontal_alignment = 1

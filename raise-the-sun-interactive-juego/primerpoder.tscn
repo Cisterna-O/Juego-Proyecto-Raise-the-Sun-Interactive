@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://b056akxhdgs2y"]
+
+[ext_resource type="FontFile" uid="uid://bu2cv5ph8bfam" path="res://antiquity-print.ttf" id="1_upldo"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.356
+anchor_right = 0.29700002
+anchor_bottom = 0.46800002
+offset_left = 38.928
+offset_top = -5.8960037
+offset_right = 91.951996
+offset_bottom = 20.911995
+theme_override_fonts/font = ExtResource("1_upldo")
+theme_override_font_sizes/font_size = 12
+text = "Debes salvarte!  
+Usa este regalo."
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.356
+anchor_right = 0.29700002
+anchor_bottom = 0.46800002
+offset_left = -12.0720005
+offset_top = 14.103996
+offset_right = 136.952
+offset_bottom = 67.911995
+theme_override_fonts/font = ExtResource("1_upldo")
+theme_override_font_sizes/font_size = 10
+text = "
+Presiona \"x\" junto a la caja."
+horizontal_alignment = 1
