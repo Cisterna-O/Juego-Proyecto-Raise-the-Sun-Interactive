@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var max_speed = 150
 @export var jump_speed = 200
 @export var gravity = 500
-@export var acceleration = 1000
+@export var acceleration = 1500
 var peso: float=1
 
 #Dash
@@ -15,6 +15,7 @@ var is_dashing: bool=false
 var isdashing: bool=false
 var dash_timer: float=0
 const dash_dura:= 0.2
+const sdash_dura:= 1
 const dash_speed:= 500
 const dash_cooldown:= 0.5
 var dash_cooldown_timer: float=0
@@ -58,7 +59,7 @@ var is_dead := false
 @onready var jump: Sprite2D=$Pivot/Jump
 @onready var fall: Sprite2D=$Pivot/Fall
 @onready var dash: Sprite2D=$Pivot/Dash
-@onready var damage: Sprite2D=$Pivot/Hurt
+@onready var dmg: Sprite2D=$Pivot/Hurt
 @onready var animation_player: AnimationPlayer=$AnimationPlayer
 @onready var animation_tree: AnimationTree=$AnimationTree
 @onready var playback : AnimationNodeStateMachinePlayback
@@ -70,9 +71,8 @@ var is_dead := false
 func _ready() -> void:
 	if velocity==null:
 		velocity=Vector2.ZERO
-	animation_tree.active=false
-	playback=animation_tree.get("parameters/playback")
 	animation_tree.active=true
+	playback=animation_tree.get("parameters/playback")
 	timer.timeout.connect(time2die)
 	pass
 
@@ -131,7 +131,7 @@ func start_dash(move_input:float):
 	velocity.x=direction*dash_speed
 
 func show_sprite(active_sprite: Sprite2D) -> void:
-	var sprites = [idle, walk, jump, damage, dash, fall]
+	var sprites = [idle, walk, jump, dmg, dash, fall]
 	for s in sprites:
 		s.visible=(s==active_sprite)
 
@@ -186,13 +186,18 @@ func _physics_process(delta: float) -> void:
 						holding=null
 				"Super Dash":
 					print("SUPERMÁXIMAVELOSIDAAAAAAD!!!")
-					if not is_on_wall_only():
+					if isdashing:
+						dash_timer=sdash_dura
+					else:
 						isdashing=true
-						var dir=sign(pivot.scale.x)
-						if dir==0:
-							dir=1
-						velocity.y=0
-						velocity.x=dir*velocidash
+						dash_timer=sdash_dura
+					var dir=sign(pivot.scale.x)
+					if dir==0:
+						dir=1
+					velocity.y=0
+					velocity.x=dir*velocidash
+					playback.travel("dash")
+					show_sprite(dash)
 				"Wallgrab":
 					print("Puerco Araña")
 			return
@@ -264,22 +269,30 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	#animation
-	if move_input:
-		pivot.scale.x=sign(move_input)
-	if is_on_floor():
-		if move_input or abs(velocity.x)>10:
-			playback.travel("walk")
-			show_sprite(walk)
-		else:
-			playback.travel("Idle")
-			show_sprite(idle)
+	if isdashing:
+		dash_timer-=delta
+		playback.travel("dash")
+		show_sprite(dash)
+		if dash_timer<=0:
+			isdashing=false
 	else:
-		if velocity.y<0:
-			playback.travel("jump_up")
-			show_sprite(jump)
+		if move_input:
+			pivot.scale.x=sign(move_input)
+		if is_on_floor():
+			if move_input or abs(velocity.x)>10:
+				playback.travel("walk")
+				show_sprite(walk)
+			else:
+				playback.travel("Idle")
+				show_sprite(idle)
 		else:
-			playback.travel("fall")
-			show_sprite(fall)
+			if velocity.y<0:
+				playback.travel("jump_up")
+				show_sprite(jump)
+			else:
+				playback.travel("fall")
+				show_sprite(fall)
+	
 
 #func take_damage(damage):
 #	if is_dead: return
@@ -320,7 +333,7 @@ func die():
 	get_parent().add_child(camera_2d)
 	camera_2d.global_position=campos
 	playback.travel("damage")
-	show_sprite(damage)
+	show_sprite(dmg)
 	velocity.y=-300
 	set_collision_mask_value(1,false)
 	set_collision_mask_value(2,false)
