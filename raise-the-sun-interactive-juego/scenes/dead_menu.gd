@@ -17,7 +17,7 @@ func _input(event: InputEvent) -> void:
 func _on_replay_dead_pressed():
 	visible = false
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
 	
 func _on_main_menu_dead_pressed():
 	visible = false
