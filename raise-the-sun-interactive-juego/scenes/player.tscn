@@ -1,8 +1,9 @@
-[gd_scene load_steps=49 format=3 uid="uid://swn07m8nqbgw"]
+[gd_scene load_steps=51 format=3 uid="uid://swn07m8nqbgw"]
 
 [ext_resource type="Script" uid="uid://b6gnkte75t771" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://d2w888bgjvx43" path="res://Assets/Ducky Revamped/Spritesheets/Idle.png" id="2_g2els"]
 [ext_resource type="Script" uid="uid://myrnkxwa1y40" path="res://Components/Hurtbox.gd" id="2_smehm"]
+[ext_resource type="Script" uid="uid://25kawypa8j3x" path="res://Components/Hitbox.gd" id="2_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://bhjhqei8xqcp8" path="res://Assets/Ducky Revamped/Spritesheets/Walk.png" id="3_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://cy2f3i3ck14ji" path="res://Assets/Ducky Revamped/Spritesheets/Jump.png" id="4_fjrip"]
 [ext_resource type="Texture2D" uid="uid://cb28jml314tkv" path="res://Assets/Ducky Revamped/Spritesheets/Hurt.png" id="5_smehm"]
@@ -11,6 +12,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(18, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4r1p"]
+size = Vector2(13, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smehm"]
 size = Vector2(18, 18)
@@ -110,6 +114,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_f1ej7"]
 resource_name = "damage"
@@ -144,6 +172,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_smehm"]
@@ -277,7 +329,7 @@ states/Idle/position = Vector2(399, 100)
 states/damage/node = SubResource("AnimationNodeAnimation_d2wvv")
 states/damage/position = Vector2(628, 195.92184)
 states/dash/node = SubResource("AnimationNodeAnimation_smehm")
-states/dash/position = Vector2(442, 4.4567833)
+states/dash/position = Vector2(441, 4.4567833)
 states/fall/node = SubResource("AnimationNodeAnimation_ur7pv")
 states/fall/position = Vector2(520, 200.75719)
 states/jump/node = SubResource("AnimationNodeAnimation_y4r1p")
@@ -294,6 +346,14 @@ script = ExtResource("1_g2els")
 position = Vector2(0, 0.5)
 scale = Vector2(0.9, 0.9)
 shape = SubResource("RectangleShape2D_g2els")
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("2_ur7pv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(7.5, 1)
+shape = SubResource("RectangleShape2D_y4r1p")
+disabled = true
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
@@ -312,7 +372,6 @@ texture = ExtResource("2_g2els")
 hframes = 2
 
 [node name="Walk" type="Sprite2D" parent="Pivot"]
-visible = false
 texture = ExtResource("3_tuyoq")
 hframes = 4
 
@@ -327,6 +386,7 @@ texture = ExtResource("5_smehm")
 hframes = 2
 
 [node name="Dash" type="Sprite2D" parent="Pivot"]
+visible = false
 texture = ExtResource("6_ur7pv")
 hframes = 12
 

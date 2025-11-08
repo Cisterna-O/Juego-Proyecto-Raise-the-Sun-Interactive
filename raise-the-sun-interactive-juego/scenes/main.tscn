@@ -205,7 +205,7 @@ position = Vector2(146, 200)
 habilidad_id = "grab"
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("5_tefeu")]
-position = Vector2(1201, 111)
+position = Vector2(1057, 144)
 
 [node name="Bloque" parent="." instance=ExtResource("6_tefeu")]
 position = Vector2(211, 198)

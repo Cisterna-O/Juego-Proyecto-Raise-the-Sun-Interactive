@@ -196,6 +196,7 @@ func _physics_process(delta: float) -> void:
 						dir=1
 					velocity.y=0
 					velocity.x=dir*velocidash
+					peso+=1
 					playback.travel("dash")
 					show_sprite(dash)
 				"Wallgrab":
