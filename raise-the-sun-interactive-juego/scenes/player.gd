@@ -19,7 +19,7 @@ const sdash_dura:= 1
 const dash_speed:= 500
 const dash_cooldown:= 0.5
 var dash_cooldown_timer: float=0
-var velocidash:= 1000
+var velocidash:= 1500
 
 #Wall Grab
 const wall_jump_pushback = 150
@@ -151,9 +151,6 @@ func _physics_process(delta: float) -> void:
 	if (is_on_floor() ) and Input.is_action_just_pressed("jump"): #or not coyote_timer.is_stopped()
 		velocity.y = -jump_speed
 		was_on_floor = false
-	####ESTO ES WALLGRAB####
-	
-	####ESTO ES WALLGRAB####
 	var move_input: float = Input.get_axis("move_left", "move_right")
 	if move_input!=0:
 		pivot.scale.x=sign(move_input)
@@ -186,12 +183,6 @@ func _physics_process(delta: float) -> void:
 						holding=null
 				"Super Dash":
 					print("SUPERMÁXIMAVELOSIDAAAAAAD!!!")
-					#Borrar esto despues
-					var campos=camera_2d.global_position
-					remove_child(camera_2d)
-					get_parent().add_child(camera_2d)
-					camera_2d.global_position=campos
-					#hasta aqui
 					if isdashing:
 						dash_timer=sdash_dura
 					else:
@@ -293,13 +284,17 @@ func _physics_process(delta: float) -> void:
 				playback.travel("Idle")
 				show_sprite(idle)
 		else:
-			if velocity.y<0:
-				playback.travel("jump_up")
-				show_sprite(jump)
+			if is_dead==true:
+				playback.travel("damage")
+				show_sprite(dmg)
 			else:
-				playback.travel("fall")
-				show_sprite(fall)
-	
+				if velocity.y<0 and is_dead==false:
+					playback.travel("jump_up")
+					show_sprite(jump)
+				else:
+					playback.travel("fall")
+					show_sprite(fall)
+		
 
 #func take_damage(damage):
 #	if is_dead: return
@@ -335,6 +330,7 @@ func take_damage(damage):
 	die()
 
 func die():
+	is_dead=true
 	var campos=camera_2d.global_position
 	remove_child(camera_2d)
 	get_parent().add_child(camera_2d)
