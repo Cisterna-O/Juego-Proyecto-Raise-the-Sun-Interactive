@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dvaq82v0cnla2"
+path="res://.godot/imported/Song of Little Ducks.mp3-cddc17ae82d6e32ae674c869b9b15c11.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sonido/Song of Little Ducks.mp3"
+dest_files=["res://.godot/imported/Song of Little Ducks.mp3-cddc17ae82d6e32ae674c869b9b15c11.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

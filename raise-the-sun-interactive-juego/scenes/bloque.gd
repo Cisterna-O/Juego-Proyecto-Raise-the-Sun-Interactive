@@ -8,6 +8,7 @@ var peso_bloque: int=1
 var held: bool=false
 var player_on_top:Player=null
 @onready var sprite: Sprite2D=$Normal
+var friction: float = 500.0
 
 func _ready() -> void:
 	velocity=Vector2.ZERO
@@ -44,6 +45,9 @@ func _on_top_detector_body_exited(body: Node2D) -> void:
 func _physics_process(delta: float) -> void:
 	if not held:
 		velocity.y+=gravity*delta
+		
+		velocity.x = move_toward(velocity.x, 0.0, friction * delta)
+		
 		move_and_slide()
 		if player_on_top and player_on_top.peso>peso_bloque:
 			print("Bloque cede")
