@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpog55mnrq2hk"
-path="res://.godot/imported/16-bit-spike-Sheet.png-03c98325b111fb51e745a103bbc3d71e.ctex"
+uid="uid://dfmpdtarnu1q7"
+path="res://.godot/imported/TopLayer.png-f3db13f40a5faf9e17e199256fe5e330.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/16-bit-spike-Sheet.png"
-dest_files=["res://.godot/imported/16-bit-spike-Sheet.png-03c98325b111fb51e745a103bbc3d71e.ctex"]
+source_file="res://Assets/Etapas/ParallaxBackground/ParallaxBackground/TopLayer.png"
+dest_files=["res://.godot/imported/TopLayer.png-f3db13f40a5faf9e17e199256fe5e330.ctex"]
 
 [params]
 
