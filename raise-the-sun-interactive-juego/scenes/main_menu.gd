@@ -10,7 +10,7 @@ func _ready() -> void:
 	quit_button.pressed.connect(_on_quit_pressed)
 	
 func _on_start_pressed():
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/nivel_tutorial.tscn")
 	
 func _on_credits_pressed():
 	get_tree().change_scene_to_file("res://scenes/credits.tscn")

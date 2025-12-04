@@ -67,6 +67,10 @@ var is_dead := false
 @onready var kick_position: Marker2D=$Pivot/Kick_pos
 @onready var camera_2d: Camera2D = $Camera2D
 
+@onready var audio_daño: AudioStreamPlayer = $AudioDaño
+@onready var audio_salto: AudioStreamPlayer = $AudioSalto
+
+
 
 func _ready() -> void:
 	if velocity==null:
@@ -149,8 +153,10 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta 
 	if (is_on_floor() ) and Input.is_action_just_pressed("jump"): #or not coyote_timer.is_stopped()
+		audio_salto.play()
 		velocity.y = -jump_speed
 		was_on_floor = false
+		
 	var move_input: float = Input.get_axis("move_left", "move_right")
 	if move_input!=0:
 		pivot.scale.x=sign(move_input)
@@ -327,7 +333,9 @@ func take_damage(damage):
 	if is_dead:
 		return
 	is_dead = true
+	audio_daño.play()
 	die()
+	
 
 func die():
 	is_dead=true
