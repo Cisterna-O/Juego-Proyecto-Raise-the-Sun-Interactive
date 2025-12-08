@@ -83,8 +83,8 @@ func equipar_habilidad(habilidad:Habilidad):
 		remover_habilidad(habilidad_a_remover)
 	habilidades.append(habilidad)
 	habilidad.aplicar(self)
-	if habilidades.size()==2:
-		combinar_habilidades()
+	combinar_habilidades()
+	actualizar_fusion()
 
 func tiene_habilidad(nombre_habilidad:String):
 	for h in habilidades:
@@ -93,8 +93,10 @@ func tiene_habilidad(nombre_habilidad:String):
 	return false
 
 func remover_habilidad(habilidad:Habilidad):
-	habilidad.remover(self)
-	habilidades.erase(habilidad)
+	if habilidad in habilidades:
+		habilidad.remover(self)
+		habilidades.erase(habilidad)
+	actualizar_fusion()
 
 func clave_combinacion(nombre1:String,nombre2:String):
 	var lista=[nombre1,nombre2]
@@ -109,15 +111,38 @@ func combinar_habilidades() -> void:
 	var clave=clave_combinacion(hab1,hab2)
 	print("Clave generada:", clave)
 	print("Claves disponibles:", combo.keys())
-	if combo.has(clave):
+	if fusion!=null:
+		if fusion.nombre!=combo.get(clave, ""):
+			fusion.remover(self)
+			fusion=null
+			fusionadas.clear()
+	if combo.has(clave) and fusion==null:
 		var resultado_nombre=combo[clave]
 		print("Combinación encontrada:", hab1, "+", hab2, "=>", resultado_nombre)
 		fusion=Habilidad.new()
 		fusion.nombre=resultado_nombre
+		fusion.es_fusion=true
 		fusion.aplicar(self)
 		fusionadas=[habilidades[0],habilidades[1]]
-	else:
-		print("❌ No hay combinación para:", clave)
+
+func actualizar_fusion():
+	#si no hay fusión activa, ná que hacer
+	if fusion == null:
+		if habilidades.size()>=2:
+			combinar_habilidades()
+		return
+	if fusionadas.size()>=2:
+		#Si alguna de las fusiones ya no está
+		if fusionadas[0] not in habilidades or fusionadas[1] not in habilidades:
+			print("🔥 Rompiendo fusión:",fusion.nombre)
+			#Remoción de los efectos de la fusión
+			fusion.remover(self)
+			#Limpiar fusión
+			fusion=null
+			fusionadas.clear()
+		#Si aún tienes 2 habilidades, intenta generar una nueva combinación
+		if habilidades.size()>=2:
+			combinar_habilidades()
 
 func start_dash(move_input:float):
 	is_dashing=true
