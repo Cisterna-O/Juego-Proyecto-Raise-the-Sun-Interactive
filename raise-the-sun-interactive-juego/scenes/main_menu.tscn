@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://7fv3swlq3ehn"]
+[gd_scene load_steps=3 format=3 uid="uid://7fv3swlq3ehn"]
 
 [ext_resource type="Script" uid="uid://cgx5o6rt3j1xf" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="AudioStream" uid="uid://dvaq82v0cnla2" path="res://Assets/Sonido/Song of Little Ducks.mp3" id="3_bqqt6"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -41,3 +42,8 @@ text = "CREDITS"
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "QUIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bqqt6")
+volume_db = -20.0
+autoplay = true

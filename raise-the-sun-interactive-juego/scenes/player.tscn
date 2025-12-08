@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://swn07m8nqbgw"]
+[gd_scene load_steps=53 format=3 uid="uid://swn07m8nqbgw"]
 
 [ext_resource type="Script" uid="uid://b6gnkte75t771" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://d2w888bgjvx43" path="res://Assets/Ducky Revamped/Spritesheets/Idle.png" id="2_g2els"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cb28jml314tkv" path="res://Assets/Ducky Revamped/Spritesheets/Hurt.png" id="5_smehm"]
 [ext_resource type="Texture2D" uid="uid://7oijki0wrp2q" path="res://Assets/Ducky Revamped/Spritesheets/Dash Attack.png" id="6_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://b0y11i5k35mek" path="res://Assets/Ducky Revamped/Spritesheets/Air Idle.png" id="7_fjrip"]
+[ext_resource type="AudioStream" uid="uid://lfge1ni1ks23" path="res://Assets/Sonido/791152__mari0411__quack.mp3" id="10_d2wvv"]
+[ext_resource type="AudioStream" uid="uid://csf1v42hc3p22" path="res://Assets/Sonido/386621__jalastram__sfx_jump_44.wav" id="11_3v2ag"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(18, 17)
@@ -340,6 +342,8 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(0, -11.567893)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 7
+collision_mask = 7
 script = ExtResource("1_g2els")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -421,6 +425,13 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="AudioDaño" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_d2wvv")
+
+[node name="AudioSalto" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_3v2ag")
+volume_db = -20.0
 
 [connection signal="body_entered" from="Pivot/Range" to="." method="_on_range_body_entered"]
 [connection signal="body_exited" from="Pivot/Range" to="." method="_on_range_body_exited"]

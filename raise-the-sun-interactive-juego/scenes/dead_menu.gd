@@ -17,7 +17,11 @@ func _input(event: InputEvent) -> void:
 func _on_replay_dead_pressed():
 	visible = false
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	var last_scene = get_tree().get_meta("last_scene")
+	if last_scene:
+		get_tree().change_scene_to_file(last_scene)
+	else:
+		get_tree().change_scene_to_file("res://scenes/nivel_base.tscn")
 	
 func _on_main_menu_dead_pressed():
 	visible = false

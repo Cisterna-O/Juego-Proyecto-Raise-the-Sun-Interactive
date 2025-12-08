@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4h1dcujsjxoq"]
+[gd_scene load_steps=3 format=3 uid="uid://b4h1dcujsjxoq"]
 
 [ext_resource type="Script" uid="uid://dl4nyj4a40wxv" path="res://scenes/credits.gd" id="1_0bpdh"]
+[ext_resource type="AudioStream" uid="uid://dvaq82v0cnla2" path="res://Assets/Sonido/Song of Little Ducks.mp3" id="2_2ckv8"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -26,6 +27,21 @@ text = "
 
 [font_size=8]
 
-Insertar creditos
+[font_size=16]Music[/font_size] 
+AudioCoffe - https://freesound.org/people/AudioCoffee/sounds/723846/
+
+[font_size=16]Assets[/font_size] 
+Duckhive - https://duckhive.itch.io/ducky
+ansimuz - https://ansimuz.itch.io/sunny-land-pixel-game-art
+
+[font_size=16]SFX[/font_size] 
+
+jalastram - https://freesound.org/people/jalastram/sounds/386621/
+Mari0411 - https://freesound.org/people/Mari0411/sounds/791152/
 
 [/font_size][/center]"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2ckv8")
+volume_db = -40.0
+autoplay = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://b3184iywoweiu"]
+[gd_scene load_steps=18 format=4 uid="uid://b3184iywoweiu"]
 
 [ext_resource type="Texture2D" uid="uid://w2uec21mni3o" path="res://Assets/Etapas/Day-Platformer/PNG/tileset.png" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://swn07m8nqbgw" path="res://scenes/player.tscn" id="3_o6xl0"]
@@ -7,6 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://xjmrvtwx5boj" path="res://scenes/barrera.tscn" id="5_tefeu"]
 [ext_resource type="PackedScene" uid="uid://c25grpirc50r2" path="res://scenes/bloque.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://jt80gv02u4f2" path="res://scenes/hud.tscn" id="7_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://dvaq82v0cnla2" path="res://Assets/Sonido/Song of Little Ducks.mp3" id="9_85g3d"]
+[ext_resource type="Texture2D" uid="uid://cedrhx4kg0ebq" path="res://Assets/Etapas/ParallaxBackground/ParallaxBackground/DownLayer.png" id="9_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://b36vqo2kfssip" path="res://Assets/Etapas/ParallaxBackground/ParallaxBackground/Captura de pantalla 2025-12-02 132547.png" id="10_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://tw8ytg20bd11" path="res://Assets/Etapas/ParallaxBackground/ParallaxBackground/Light.png" id="11_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://f6eltmts7yvk" path="res://Assets/Etapas/ParallaxBackground/ParallaxBackground/MiddleLayer.png" id="12_muem4"]
+[ext_resource type="Texture2D" uid="uid://dfmpdtarnu1q7" path="res://Assets/Etapas/ParallaxBackground/ParallaxBackground/TopLayer.png" id="13_dp3eg"]
 [ext_resource type="PackedScene" uid="uid://7hw1s6wsb0cf" path="res://scenes/pinchos.tscn" id="14_a8y0u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7y16x"]
@@ -188,7 +194,11 @@ shape = SubResource("WorldBoundaryShape2D_4typ4")
 
 [node name="Player" parent="." instance=ExtResource("3_o6xl0")]
 z_index = 1
+<<<<<<< HEAD
 position = Vector2(448, 169)
+=======
+position = Vector2(537, 185)
+>>>>>>> 1287550a498504faa8b7ceb60a80df738ea195f4
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_tipki")]
 process_mode = 3
@@ -292,7 +302,7 @@ scale = Vector2(0.73, 0.73)
 [node name="Parallax2D" type="Parallax2D" parent="fondo"]
 z_index = -2
 texture_filter = 1
-scroll_scale = Vector2(0.2, 0.2)
+scroll_scale = Vector2(0.1, 0.1)
 scroll_offset = Vector2(0, -38.561657)
 repeat_size = Vector2(1040, 0)
 repeat_times = 4
@@ -301,16 +311,18 @@ repeat_times = 4
 z_index = -2
 position = Vector2(333, 169)
 scale = Vector2(2.7109375, 3.0061727)
+texture = ExtResource("9_a8y0u")
 
 [node name="Sprite2D2" type="Sprite2D" parent="fondo/Parallax2D"]
 z_index = -2
-position = Vector2(1235.7422, 677.04315)
+position = Vector2(1254.7944, -46.36975)
 scale = Vector2(7.349182, 9.037074)
+texture = ExtResource("10_jkv2x")
 
 [node name="Parallax2D2" type="Parallax2D" parent="fondo"]
 z_index = -2
 texture_filter = 1
-scroll_scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0, 0)
 scroll_offset = Vector2(0, -38.561657)
 repeat_size = Vector2(1040, 0)
 repeat_times = 4
@@ -319,6 +331,7 @@ repeat_times = 4
 z_index = -2
 position = Vector2(333, 169)
 scale = Vector2(2.7109375, 3.0061727)
+texture = ExtResource("11_jbj1t")
 
 [node name="Parallax2D3" type="Parallax2D" parent="fondo"]
 z_index = -2
@@ -332,11 +345,12 @@ repeat_times = 4
 z_index = -2
 position = Vector2(333, 169)
 scale = Vector2(2.7109375, 3.0061727)
+texture = ExtResource("12_muem4")
 
 [node name="Parallax2D4" type="Parallax2D" parent="fondo"]
 z_index = -2
 texture_filter = 1
-scroll_scale = Vector2(0.8, 0.8)
+scroll_scale = Vector2(0.9, 0.9)
 scroll_offset = Vector2(0, -38.561657)
 repeat_size = Vector2(1040, 0)
 repeat_times = 4
@@ -345,6 +359,20 @@ repeat_times = 4
 z_index = -2
 position = Vector2(333, 169)
 scale = Vector2(2.7109375, 3.0061727)
+texture = ExtResource("13_dp3eg")
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("5_tefeu")]
 position = Vector2(2285, 145)
+
+[node name="item4" parent="." instance=ExtResource("5_tbgi4")]
+position = Vector2(360, 185)
+habilidad_id = "dash"
+
+[node name="item5" parent="." instance=ExtResource("5_tbgi4")]
+position = Vector2(393, 182)
+habilidad_id = "dash"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_85g3d")
+volume_db = -40.0
+autoplay = true
