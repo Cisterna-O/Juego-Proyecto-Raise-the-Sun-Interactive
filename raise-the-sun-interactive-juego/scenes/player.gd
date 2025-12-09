@@ -362,22 +362,23 @@ func take_damage(damage):
 	die()
 	
 
-func die():
-	is_dead=true
-	var campos=camera_2d.global_position
-	remove_child(camera_2d)
-	get_parent().add_child(camera_2d)
-	camera_2d.global_position=campos
-	playback.travel("damage")
-	show_sprite(dmg)
-	velocity.y=-300
-	set_collision_mask_value(1,false)
-	set_collision_mask_value(2,false)
-	timer.start()
-	await timer.timeout
-	var current_scene_path = get_tree().current_scene.scene_file_path
-	get_tree().set_meta("last_scene", current_scene_path)
+func die(): 
+	is_dead=true 
+	var campos=camera_2d.global_position 
+	remove_child(camera_2d) 
+	get_parent().add_child(camera_2d) 
+	camera_2d.global_position=campos 
+	playback.travel("damage") 
+	show_sprite(dmg) 
+	velocity.y=-300 
+	set_collision_mask_value(1,false) 
+	set_collision_mask_value(2,false) 
+	timer.start() 
+	await timer.timeout 
+	var current_scene_path = get_tree().current_scene.scene_file_path 
+	get_tree().set_meta("last_scene", current_scene_path) 
 	get_tree().change_scene_to_file("res://scenes/DeadMenu.tscn")
+
 
 func time2die():
 	print("Undertaker!!")
