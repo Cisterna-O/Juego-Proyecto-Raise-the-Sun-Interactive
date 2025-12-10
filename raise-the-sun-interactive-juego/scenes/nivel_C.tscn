@@ -735,5 +735,14 @@ bbcode_enabled = true
 text = "[center][font_size=8]Salida
 [/font_size][/center]"
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = -1991.0
+offset_top = -346.0
+offset_right = -1950.0
+offset_bottom = -321.0
+bbcode_enabled = true
+text = "[center][font_size=8]Objetivo
+[/font_size][/center]"
+
 [node name="spawn_from_centro_level2" type="Node2D" parent="."]
 position = Vector2(-2322, -390)
