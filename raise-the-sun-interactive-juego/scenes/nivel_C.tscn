@@ -195,7 +195,7 @@ shape = SubResource("WorldBoundaryShape2D_4typ4")
 
 [node name="Player" parent="." instance=ExtResource("2_w1tly")]
 z_index = 1
-position = Vector2(1534, -26)
+position = Vector2(-2324, -390)
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_htfe2")]
 process_mode = 3
