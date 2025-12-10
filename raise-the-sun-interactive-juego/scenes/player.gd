@@ -178,6 +178,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta 
 	if (is_on_floor() ) and Input.is_action_just_pressed("jump"): #or not coyote_timer.is_stopped()
+		print("jump")
 		audio_salto.play()
 		velocity.y = -jump_speed
 		was_on_floor = false
