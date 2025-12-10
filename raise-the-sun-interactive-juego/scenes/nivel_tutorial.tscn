@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dwgsi5eq0rxtm"]
+[gd_scene load_steps=18 format=4 uid="uid://cd7400ku0yvoa"]
 
 [ext_resource type="Texture2D" uid="uid://w2uec21mni3o" path="res://Assets/Etapas/Day-Platformer/PNG/tileset.png" id="1_r5rf2"]
 [ext_resource type="PackedScene" uid="uid://swn07m8nqbgw" path="res://scenes/player.tscn" id="2_lnpo5"]
@@ -388,7 +388,7 @@ texture = ExtResource("10_wbcn2")
 
 [node name="Sprite2D2" type="Sprite2D" parent="fondo2/Parallax2D"]
 z_index = -2
-position = Vector2(2168.4932, -275.13696)
+position = Vector2(1834.2466, -292.9452)
 scale = Vector2(7.349182, 9.037074)
 texture = ExtResource("11_mlmqp")
 

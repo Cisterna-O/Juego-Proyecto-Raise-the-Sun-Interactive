@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://b3184iywoweiu"]
+[gd_scene load_steps=21 format=4 uid="uid://bfh5bmpaheu62"]
 
 [ext_resource type="Texture2D" uid="uid://w2uec21mni3o" path="res://Assets/Etapas/Day-Platformer/PNG/tileset.png" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://swn07m8nqbgw" path="res://scenes/player.tscn" id="3_o6xl0"]

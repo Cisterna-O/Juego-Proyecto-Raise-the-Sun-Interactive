@@ -7,7 +7,7 @@ var peso_bloque: int=1
 @onready var collider: CollisionShape2D=$CollisionShape2D
 var held: bool=false
 var player_on_top:Player=null
-@onready var sprite: Sprite2D=$Normal
+@onready var sprite: Sprite2D=$Sprite2D
 
 func _ready() -> void:
 	add_to_group("plataformas")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://p3cdtdotlpxg"]
+[gd_scene load_steps=19 format=4 uid="uid://p3cdtdotlpxg"]
 
 [ext_resource type="Texture2D" uid="uid://w2uec21mni3o" path="res://Assets/Etapas/Day-Platformer/PNG/tileset.png" id="1_sm13p"]
 [ext_resource type="PackedScene" uid="uid://swn07m8nqbgw" path="res://scenes/player.tscn" id="2_l0ir2"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://f6eltmts7yvk" path="res://Assets/Etapas/ParallaxBackground/ParallaxBackground/MiddleLayer.png" id="12_t3egt"]
 [ext_resource type="Texture2D" uid="uid://dfmpdtarnu1q7" path="res://Assets/Etapas/ParallaxBackground/ParallaxBackground/TopLayer.png" id="13_gmcad"]
 [ext_resource type="AudioStream" uid="uid://dvaq82v0cnla2" path="res://Assets/Sonido/Song of Little Ducks.mp3" id="14_srf05"]
+[ext_resource type="PackedScene" uid="uid://dn86qgafrw1vn" path="res://scenes/plataforma.tscn" id="15_l0ir2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7y16x"]
 texture = ExtResource("1_sm13p")
@@ -371,3 +372,7 @@ habilidad_id = "dash"
 stream = ExtResource("14_srf05")
 volume_db = -20.0
 autoplay = true
+
+[node name="Plataforma" parent="." instance=ExtResource("15_l0ir2")]
+position = Vector2(748, 157)
+tipo = "ligero"

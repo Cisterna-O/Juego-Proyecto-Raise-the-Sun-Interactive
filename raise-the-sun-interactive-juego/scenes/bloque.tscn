@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c25grpirc50r2"]
 
 [ext_resource type="Script" uid="uid://q7dyadd7lgxg" path="res://scenes/bloque.gd" id="1_cmoke"]
-[ext_resource type="Texture2D" uid="uid://bo6wuqdblsffr" path="res://icon.svg" id="1_h0a8a"]
+[ext_resource type="Texture2D" uid="uid://o6lhi4s5vy7s" path="res://Assets/wood_set/1.png" id="2_cmoke"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmoke"]
 
@@ -14,9 +14,9 @@ collision_mask = 3
 script = ExtResource("1_cmoke")
 
 [node name="Normal" type="Sprite2D" parent="."]
-position = Vector2(-2.3841858e-07, -7.1525574e-07)
-scale = Vector2(0.15625, 0.15625001)
-texture = ExtResource("1_h0a8a")
+position = Vector2(9.536743e-07, 9.536743e-07)
+scale = Vector2(0.0390625, 0.039062496)
+texture = ExtResource("2_cmoke")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_cmoke")

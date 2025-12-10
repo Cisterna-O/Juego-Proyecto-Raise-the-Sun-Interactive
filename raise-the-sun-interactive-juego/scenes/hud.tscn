@@ -10,13 +10,8 @@ script = ExtResource("1_8msyy")
 
 [node name="Start" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -193.0
-offset_right = -133.0
-offset_bottom = 148.0
-grow_horizontal = 2
+offset_right = 57.0
+offset_bottom = 94.0
 theme = SubResource("Theme_0yvta")
 theme_override_constants/separation = 32
 
@@ -28,11 +23,13 @@ text = "Skills"
 [node name="skill_container" type="HBoxContainer" parent="Start"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 2
 
 [node name="skill1" type="VBoxContainer" parent="Start/skill_container"]
 layout_mode = 2
 
 [node name="skill1_color" type="ColorRect" parent="Start/skill_container/skill1"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 
 [node name="skill1_name" type="Label" parent="Start/skill_container/skill1"]
@@ -44,12 +41,13 @@ text = "skill 1"
 layout_mode = 2
 
 [node name="skill2_color" type="ColorRect" parent="Start/skill_container/skill2"]
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 
 [node name="skill2_name" type="Label" parent="Start/skill_container/skill2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
-text = "skill2"
+text = "skill 2"
 
 [node name="CollectedCoins" type="Label" parent="."]
 unique_name_in_owner = true

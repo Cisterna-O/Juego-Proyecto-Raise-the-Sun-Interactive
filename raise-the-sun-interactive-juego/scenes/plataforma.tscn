@@ -1,28 +1,30 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn86qgafrw1vn"]
 
 [ext_resource type="Script" uid="uid://451s2u4sm1tj" path="res://scenes/plataforma.gd" id="1_1v4vm"]
-[ext_resource type="Texture2D" uid="uid://bo6wuqdblsffr" path="res://icon.svg" id="2_hm2qp"]
+[ext_resource type="Texture2D" uid="uid://c2s26ncp7wt7w" path="res://Assets/wood_set/3.png" id="2_4jb62"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2trmg"]
-size = Vector2(8, 3)
+size = Vector2(15, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k7h81"]
-size = Vector2(8, 2)
+size = Vector2(15, 2)
 
 [node name="Plataforma" type="StaticBody2D"]
 script = ExtResource("1_1v4vm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_2trmg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.062499996, 0.0234375)
-texture = ExtResource("2_hm2qp")
+position = Vector2(0.5, -2.9802322e-08)
+scale = Vector2(0.029296875, 0.0061035156)
+texture = ExtResource("2_4jb62")
 
 [node name="Top Detector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top Detector"]
-position = Vector2(0, -1)
+position = Vector2(0.5, -1)
 shape = SubResource("RectangleShape2D_k7h81")
 
 [connection signal="body_entered" from="Top Detector" to="." method="_on_top_detector_body_entered"]

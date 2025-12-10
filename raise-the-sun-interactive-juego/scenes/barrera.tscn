@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://xjmrvtwx5boj"]
 
 [ext_resource type="Script" uid="uid://tuk1htashg74" path="res://scenes/barrera.gd" id="1_b8qsa"]
-[ext_resource type="Texture2D" uid="uid://bo6wuqdblsffr" path="res://icon.svg" id="2_3kamg"]
+[ext_resource type="Texture2D" uid="uid://dex4xa1jq4cqa" path="res://Assets/wood_set/2.PNG" id="2_3kamg"]
 [ext_resource type="Script" uid="uid://myrnkxwa1y40" path="res://Components/Hurtbox.gd" id="3_3kamg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxpb3"]
@@ -21,7 +21,8 @@ shape = SubResource("RectangleShape2D_mxpb3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.76862746, 0.3372549, 0, 1)
-scale = Vector2(0.2, 1)
+position = Vector2(-9.536743e-07, 0.5000102)
+scale = Vector2(0.05078125, 0.25195315)
 texture = ExtResource("2_3kamg")
 
 [node name="Hurtbox" type="Area2D" parent="."]
