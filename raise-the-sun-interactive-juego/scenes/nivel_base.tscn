@@ -14,11 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://f6eltmts7yvk" path="res://Assets/Etapas/ParallaxBackground/ParallaxBackground/MiddleLayer.png" id="12_t3egt"]
 [ext_resource type="Texture2D" uid="uid://dfmpdtarnu1q7" path="res://Assets/Etapas/ParallaxBackground/ParallaxBackground/TopLayer.png" id="13_gmcad"]
 [ext_resource type="AudioStream" uid="uid://dvaq82v0cnla2" path="res://Assets/Sonido/Song of Little Ducks.mp3" id="14_srf05"]
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://dn86qgafrw1vn" path="res://scenes/plataforma.tscn" id="15_l0ir2"]
-=======
 [ext_resource type="PackedScene" uid="uid://bee6fktb18ts6" path="res://scenes/portal.tscn" id="15_l0ir2"]
->>>>>>> 34d2d5f90e30483f5257a18d4d858ddc3741d5eb
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7y16x"]
 texture = ExtResource("1_sm13p")
@@ -379,11 +375,6 @@ stream = ExtResource("14_srf05")
 volume_db = -20.0
 autoplay = true
 
-<<<<<<< HEAD
-[node name="Plataforma" parent="." instance=ExtResource("15_l0ir2")]
-position = Vector2(748, 157)
-tipo = "ligero"
-=======
 [node name="Portal" parent="." instance=ExtResource("15_l0ir2")]
 position = Vector2(2089, 30)
 target_spawn_name = "spawn_from_centro_level1"
@@ -441,4 +432,3 @@ position = Vector2(2019, 29)
 
 [node name="spawn_from_level2" type="Node2D" parent="."]
 position = Vector2(2019, 182)
->>>>>>> 34d2d5f90e30483f5257a18d4d858ddc3741d5eb
