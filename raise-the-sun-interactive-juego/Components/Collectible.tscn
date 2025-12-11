@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmh54u1d2wfmp"]
+
+[ext_resource type="Script" uid="uid://b57dh431pkhir" path="res://Components/collectible.gd" id="1_b6gln"]
+[ext_resource type="Texture2D" uid="uid://bc43hysp62ppd" path="res://Assets/16x16 RPG Item Pack/16x16 RPG Item Pack/Item__68.png" id="2_fv1lb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isljo"]
+size = Vector2(15.5, 16.5)
+
+[node name="Collectible" type="Area2D"]
+script = ExtResource("1_b6gln")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9, 9)
+texture = ExtResource("2_fv1lb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.25, 8.75)
+shape = SubResource("RectangleShape2D_isljo")

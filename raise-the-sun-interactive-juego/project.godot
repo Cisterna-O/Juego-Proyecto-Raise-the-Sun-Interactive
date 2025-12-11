@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 TransitionManager="*res://autoloads/transition_manager.tscn"
 SceneTransition="*res://codigo/SceneTransition.gd"
+GameState="*res://autoloads/GameState.gd"
 
 [display]
 

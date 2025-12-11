@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c82bv6b3ictsx"]
+[gd_scene load_steps=19 format=4 uid="uid://c82bv6b3ictsx"]
 
 [ext_resource type="Texture2D" uid="uid://w2uec21mni3o" path="res://Assets/Etapas/Day-Platformer/PNG/tileset.png" id="1_kmicw"]
 [ext_resource type="PackedScene" uid="uid://swn07m8nqbgw" path="res://scenes/player.tscn" id="2_w1tly"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c25grpirc50r2" path="res://scenes/bloque.tscn" id="13_kt3sy"]
 [ext_resource type="PackedScene" uid="uid://bee6fktb18ts6" path="res://scenes/portal.tscn" id="14_gxctg"]
 [ext_resource type="Texture2D" uid="uid://dfmpdtarnu1q7" path="res://Assets/Etapas/ParallaxBackground/ParallaxBackground/TopLayer.png" id="14_xabbl"]
+[ext_resource type="PackedScene" uid="uid://bmh54u1d2wfmp" path="res://Components/Collectible.tscn" id="15_fm4lt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7y16x"]
 texture = ExtResource("1_kmicw")
@@ -196,7 +197,7 @@ shape = SubResource("WorldBoundaryShape2D_4typ4")
 
 [node name="Player" parent="." instance=ExtResource("2_w1tly")]
 z_index = 1
-position = Vector2(-2324, -390)
+position = Vector2(-2324, -392)
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_htfe2")]
 process_mode = 3
@@ -738,6 +739,7 @@ text = "[center][font_size=8]Salida
 [/font_size][/center]"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
+visible = false
 offset_left = -1991.0
 offset_top = -346.0
 offset_right = -1950.0
@@ -748,3 +750,7 @@ text = "[center][font_size=8]Objetivo
 
 [node name="spawn_from_centro_level2" type="Node2D" parent="."]
 position = Vector2(-2322, -390)
+
+[node name="Collectible" parent="." instance=ExtResource("15_fm4lt")]
+position = Vector2(-1986, -319)
+item_id = "level2_B"
