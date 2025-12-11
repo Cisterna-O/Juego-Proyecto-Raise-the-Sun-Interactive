@@ -180,6 +180,7 @@ sources/4 = SubResource("TileSetAtlasSource_7y16x")
 distance = -1510.0
 
 [node name="main" type="Node2D"]
+position = Vector2(-425, 42)
 
 [node name="TileMap" type="TileMapLayer" parent="."]
 position = Vector2(23, -30)
