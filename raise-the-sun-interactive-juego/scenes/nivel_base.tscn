@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://p3cdtdotlpxg"]
+[gd_scene load_steps=21 format=4 uid="uid://p3cdtdotlpxg"]
 
 [ext_resource type="Texture2D" uid="uid://w2uec21mni3o" path="res://Assets/Etapas/Day-Platformer/PNG/tileset.png" id="1_sm13p"]
 [ext_resource type="PackedScene" uid="uid://swn07m8nqbgw" path="res://scenes/player.tscn" id="2_l0ir2"]
@@ -17,9 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bee6fktb18ts6" path="res://scenes/portal.tscn" id="15_l0ir2"]
 [ext_resource type="PackedScene" uid="uid://cmoocm1k4ug76" path="res://scenes/final.tscn" id="16_l5bfk"]
 [ext_resource type="PackedScene" uid="uid://cp1akce3w7prm" path="res://Components/door.tscn" id="17_8071l"]
-[ext_resource type="PackedScene" uid="uid://bmh54u1d2wfmp" path="res://Components/Collectible.tscn" id="18_upk66"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7y16x"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8071l"]
 texture = ExtResource("1_sm13p")
 0:0/0 = 0
 1:0/0 = 0
@@ -178,7 +177,7 @@ terrain_set_1/terrain_0/name = "fondo top"
 terrain_set_1/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 terrain_set_1/terrain_1/name = "fondo"
 terrain_set_1/terrain_1/color = Color(0.41893098, 0.27953887, 0.9652173, 1)
-sources/4 = SubResource("TileSetAtlasSource_7y16x")
+sources/4 = SubResource("TileSetAtlasSource_8071l")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4typ4"]
 distance = -302.0
@@ -383,6 +382,7 @@ parameters/looping = true
 
 [node name="Portal" parent="." instance=ExtResource("15_l0ir2")]
 position = Vector2(2089, 30)
+target_scene_path = "res://scenes/NivelCarvallo.tscn"
 target_spawn_name = "spawn_from_centro_level1"
 portal_id = "centro_to_lvl1"
 
@@ -446,7 +446,3 @@ collision_mask = 255
 
 [node name="Door" parent="." instance=ExtResource("17_8071l")]
 position = Vector2(523, -1)
-
-[node name="Collectible" parent="." instance=ExtResource("18_upk66")]
-position = Vector2(1951, 11)
-item_id = "level1_A"

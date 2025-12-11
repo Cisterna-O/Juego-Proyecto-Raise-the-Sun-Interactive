@@ -749,8 +749,8 @@ text = "[center][font_size=8]Objetivo
 [/font_size][/center]"
 
 [node name="spawn_from_centro_level2" type="Node2D" parent="."]
-position = Vector2(-2322, -390)
+position = Vector2(-2325, -392)
 
 [node name="Collectible" parent="." instance=ExtResource("15_fm4lt")]
-position = Vector2(-1986, -319)
+position = Vector2(-1954, -331)
 item_id = "level2_B"

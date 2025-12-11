@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://di4jhb0pn5x6u"]
+[gd_scene load_steps=3 format=3 uid="uid://di4jhb0pn5x6u"]
 
 [ext_resource type="Script" uid="uid://bgup0xy7ulrlb" path="res://scenes/dead_menu.gd" id="1_mp3x5"]
+[ext_resource type="Texture2D" uid="uid://d3wqhcxm3kxqm" path="res://Assets/Ducky Revamped/Spritesheets/Crouch.png" id="2_klk5a"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_mp3x5")
@@ -42,3 +43,10 @@ text = "Main Menu"
 [node name="QuitDead" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(94, 209)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(98, -120)
+texture = ExtResource("2_klk5a")
