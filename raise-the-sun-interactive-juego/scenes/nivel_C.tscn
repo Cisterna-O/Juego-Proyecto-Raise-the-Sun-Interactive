@@ -282,6 +282,7 @@ texture = ExtResource("14_xabbl")
 stream = ExtResource("9_21dfj")
 volume_db = -25.0
 autoplay = true
+parameters/looping = true
 
 [node name="Pinchos" parent="." instance=ExtResource("8_q3q4m")]
 position = Vector2(-1803, 441)

@@ -47,3 +47,4 @@ text = "QUIT"
 stream = ExtResource("3_bqqt6")
 volume_db = -20.0
 autoplay = true
+parameters/looping = true

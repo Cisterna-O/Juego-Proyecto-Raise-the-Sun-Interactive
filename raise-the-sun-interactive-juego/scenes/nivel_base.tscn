@@ -374,6 +374,7 @@ habilidad_id = "dash"
 stream = ExtResource("14_srf05")
 volume_db = -20.0
 autoplay = true
+parameters/looping = true
 
 [node name="Portal" parent="." instance=ExtResource("15_l0ir2")]
 position = Vector2(2089, 30)

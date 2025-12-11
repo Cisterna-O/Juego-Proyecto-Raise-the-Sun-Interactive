@@ -45,3 +45,4 @@ Mari0411 - https://freesound.org/people/Mari0411/sounds/791152/
 stream = ExtResource("2_2ckv8")
 volume_db = -40.0
 autoplay = true
+parameters/looping = true
