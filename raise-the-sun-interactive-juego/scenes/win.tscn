@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4nyjmw2k1duh"]
+
+[ext_resource type="Script" uid="uid://ro50wuevcynp" path="res://scenes/win.gd" id="1_826fv"]
+[ext_resource type="AudioStream" uid="uid://dvaq82v0cnla2" path="res://Assets/Sonido/Song of Little Ducks.mp3" id="2_iiocm"]
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_826fv")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 106.0
+grow_horizontal = 2
+bbcode_enabled = true
+text = "[center][wave][rainbow][font_size=48]You win[/font_size][/rainbow][/wave]
+[font_size=8]
+[font_size=16][rainbow]game over...?[/rainbow][/font_size] 
+[/font_size][/center]"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 141.0
+offset_top = -103.0
+offset_right = -144.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "CREDITS"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "QUIT"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_iiocm")
+volume_db = -40.0
+autoplay = true
+parameters/looping = true

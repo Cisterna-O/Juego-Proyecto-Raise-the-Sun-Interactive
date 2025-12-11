@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://p3cdtdotlpxg"]
+[gd_scene load_steps=20 format=4 uid="uid://p3cdtdotlpxg"]
 
 [ext_resource type="Texture2D" uid="uid://w2uec21mni3o" path="res://Assets/Etapas/Day-Platformer/PNG/tileset.png" id="1_sm13p"]
 [ext_resource type="PackedScene" uid="uid://swn07m8nqbgw" path="res://scenes/player.tscn" id="2_l0ir2"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dfmpdtarnu1q7" path="res://Assets/Etapas/ParallaxBackground/ParallaxBackground/TopLayer.png" id="13_gmcad"]
 [ext_resource type="AudioStream" uid="uid://dvaq82v0cnla2" path="res://Assets/Sonido/Song of Little Ducks.mp3" id="14_srf05"]
 [ext_resource type="PackedScene" uid="uid://bee6fktb18ts6" path="res://scenes/portal.tscn" id="15_l0ir2"]
+[ext_resource type="PackedScene" uid="uid://cmoocm1k4ug76" path="res://scenes/final.tscn" id="16_l5bfk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7y16x"]
 texture = ExtResource("1_sm13p")
@@ -196,6 +197,8 @@ shape = SubResource("WorldBoundaryShape2D_4typ4")
 [node name="Player" parent="." instance=ExtResource("2_l0ir2")]
 z_index = 1
 position = Vector2(1060, -112)
+collision_layer = 15
+collision_mask = 15
 
 [node name="PauseMenu" parent="." instance=ExtResource("3_l5bfk")]
 process_mode = 3
@@ -433,3 +436,8 @@ position = Vector2(2019, 29)
 
 [node name="spawn_from_level2" type="Node2D" parent="."]
 position = Vector2(2019, 182)
+
+[node name="final" parent="." instance=ExtResource("16_l5bfk")]
+position = Vector2(133, 0)
+collision_layer = 255
+collision_mask = 255
